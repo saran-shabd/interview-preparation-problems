@@ -25,6 +25,7 @@ public:
     void levelOrderTraversal();
     int getHeight();
     bool compare(Node*& other);
+    int size();
 
 private:
 

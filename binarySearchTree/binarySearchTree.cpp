@@ -100,3 +100,21 @@ void BinarySearchTree::levelOrderTraversal(Node*& root, int currHeight) {
         levelOrderTraversal(root->right, currHeight - 1);
     }
 }
+
+int BinarySearchTree::size() {
+    stack<Node*> nodes;
+
+    nodes.push(rootNode);
+    int count = 0;
+
+    while (!nodes.empty()) {
+        Node* currNode = nodes.top(); nodes.pop();
+
+        ++count;
+
+        if (nullptr != currNode->left) nodes.push(currNode->left);
+        if (nullptr != currNode->right) nodes.push(currNode->right);
+    }
+
+    return count;
+}

@@ -22,6 +22,8 @@ public:
     void preorderTraversal();
     void postorderTraversal();
     void inorderTraversal();
+    void levelOrderTraversal();
+    int getHeight();
     bool compare(Node*& other);
 
 private:
@@ -30,7 +32,9 @@ private:
     void preorderTraversal(Node*& root);
     void postorderTraversal(Node*& root);
     void inorderTraversal(Node*& root);
+    void levelOrderTraversal(Node*& root, int currHeight);
     bool compare(Node*&root, Node*& other);
+    int getHeight(Node*& root);
 };
 
 #endif

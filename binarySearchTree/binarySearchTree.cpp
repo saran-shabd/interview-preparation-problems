@@ -70,3 +70,33 @@ bool BinarySearchTree::compare(Node*&root, Node*& other) {
 
     return leftResult && rightResult;
 }
+
+int BinarySearchTree::getHeight() {
+    return getHeight(rootNode);
+}
+
+int BinarySearchTree::getHeight(Node*& rootNode) {
+    if (nullptr == rootNode) return 0;
+
+    int leftHeight = getHeight(rootNode->left);
+    int rightHeight = getHeight(rootNode->right);
+
+    return max(leftHeight, rightHeight) + 1;
+}
+
+void BinarySearchTree::levelOrderTraversal() {
+    int height = getHeight(rootNode);
+    for (int i = 1; i <= height; ++i) levelOrderTraversal(rootNode, i);
+    cout << "\n";
+}
+
+void BinarySearchTree::levelOrderTraversal(Node*& root, int currHeight) {
+    if (nullptr == root) return;
+    
+    if (1 == currHeight) {
+        cout << root->key << " ";
+    } else {
+        levelOrderTraversal(root->left, currHeight - 1);
+        levelOrderTraversal(root->right, currHeight - 1);
+    }
+}
